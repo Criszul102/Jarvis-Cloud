@@ -1,0 +1,4 @@
+python-telegram-bot
+groq
+edge_tts
+pygame
