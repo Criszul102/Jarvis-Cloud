@@ -68,21 +68,3 @@ if __name__ == '__main__':
     # Ahora aceptamos TEXTO y VOZ
     app.add_handler(MessageHandler(filters.TEXT | filters.VOICE, responder))
     app.run_polling()
-
-from wakeonlan import send_magic_packet # Asegúrate de tener 'wakeonlan' en tu requirements.txt
-
-# --- DATOS DE TU BASE STARK ---
-MAC_TORRE = 'a0:ad:9f:b7:34:be' 
-IP_CASA = '82.159.1.38' # La que acabas de buscar en Google
-
-def encender_torre():
-    # Enviamos el paquete mágico desde la nube hasta tu router
-    send_magic_packet(MAC_TORRE, ip_address=IP_CASA, port=9)
-    return "Iniciando protocolo de arranque, patrón. La cincuenta sesenta Ti está despertando."
-
-# Dentro de tu función 'responder', añade este comando:
-if "enciende la torre" in texto_usuario:
-    respuesta_texto = encender_torre()
-
-
-
