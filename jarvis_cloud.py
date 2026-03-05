@@ -22,7 +22,7 @@ client = Groq(api_key=GROQ_API_KEY)
 async def responder(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ¿Es voz o texto?
     if update.message.voice:
-        print("Recibiendo audio del patrón...")
+        print("Recibiendo audio de Cristian...")
         # 1. Descargamos el audio de Telegram
         archivo_ogg = await update.message.voice.get_file()
         ruta_ogg = "audio.ogg"
@@ -40,13 +40,13 @@ async def responder(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         texto_usuario = update.message.text
 
-    print(f"Patrón dijo: {texto_usuario}")
+    print(f"Cristian dijo: {texto_usuario}")
 
     # 3. Jarvis piensa (IA)
     completion = client.chat.completions.create(
         model="llama-3.3-70b-versatile",
         messages=[
-            {"role": "system", "content": "Eres Jarvis, el asistente de Tony Stark. Hablas con un toque colombiano culto (patrón, elegancia)."},
+            {"role": "system", "content": "Eres Jarvis, el asistente de Cristian Camilo. Hablas con un toque colombiano al estilo Maluma o JBalvin."},
             {"role": "user", "content": texto_usuario}
         ],
     )
@@ -68,3 +68,4 @@ if __name__ == '__main__':
     # Ahora aceptamos TEXTO y VOZ
     app.add_handler(MessageHandler(filters.TEXT | filters.VOICE, responder))
     app.run_polling()
+
