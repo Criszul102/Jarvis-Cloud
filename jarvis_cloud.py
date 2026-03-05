@@ -73,7 +73,7 @@ from wakeonlan import send_magic_packet # Asegúrate de tener 'wakeonlan' en tu 
 
 # --- DATOS DE TU BASE STARK ---
 MAC_TORRE = 'a0:ad:9f:b7:34:be' 
-IP_CASA = '192.168.0.50' # La que acabas de buscar en Google
+IP_CASA = '192.168.0.1' # La que acabas de buscar en Google
 
 def encender_torre():
     # Enviamos el paquete mágico desde la nube hasta tu router
@@ -83,4 +83,5 @@ def encender_torre():
 # Dentro de tu función 'responder', añade este comando:
 if "enciende la torre" in texto_usuario:
     respuesta_texto = encender_torre()
+
 
